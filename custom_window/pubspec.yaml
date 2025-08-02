@@ -17,3 +17,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/instamojo.png
+    - assets/logo.gif
+    - assets/a.jpg
+    - assets/b.png

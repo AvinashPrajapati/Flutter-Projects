@@ -1,5 +1,4 @@
 import 'package:custom_window/drawer_menu_item.dart';
-import 'package:custom_window/pages/homepage.dart';
 import 'package:flutter/material.dart';
 
 const maxMobileWidth = 600;
@@ -31,26 +30,29 @@ void main() {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
       ),
-      home: Pages(),
+      home: MyHomePage(),
     ),
   );
 }
 
-class Pages extends StatefulWidget {
-  const Pages({super.key});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
   @override
-  State<Pages> createState() => _PageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _PageState extends State<Pages> {
+class _MyHomePageState extends State<MyHomePage> {
   int selectedIndex = 0;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   Widget buildPage() {
     switch (selectedIndex) {
       case 0:
-        return const Homepage();
+        return const Center(
+          key: PageStorageKey('home'),
+          child: Text('Home Page'),
+        );
       case 1:
         return const Center(
           key: PageStorageKey('favorites'),
@@ -103,7 +105,7 @@ class _PageState extends State<Pages> {
               isDesktop: true,
             ),
           if (isDesktop) const VerticalDivider(width: 1),
-          Expanded(child: buildPage()),
+          Expanded(child: Center(child: buildPage())),
         ],
       ),
     );
